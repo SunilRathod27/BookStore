@@ -1,0 +1,9 @@
+User Add : http://localhost:4000/users/register
+User Login : http://localhost:4000/api/users/authenticate
+User Find By ID : http://localhost:4000/api/users/62caf36a8844f249c6d6b49f
+
+
+
+Book Add    : http://localhost:4000/api/books/add
+Book Update : http://localhost:4000/api/books/update/62cb44434118dec07e330529
+Book Delete : http://localhost:4000/api/books/62cb3eb45df56ec7e53f594d
