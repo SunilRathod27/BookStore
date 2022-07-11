@@ -14,9 +14,10 @@ module.exports = {
 
 
 async function getAllBooks(data) {
+    let startfrom = data.startfrom == null || data.startfrom == undefined ? 0 : data.startfrom;
+    // let displayRecords = data.displayRecords ?? 10;
+    let displayRecords = data.displayRecords == null || data.displayRecords == undefined ? 0 : data.displayRecords;
 
-    let startfrom = data.startfrom ?? 0;
-    let displayRecords = data.displayRecords ?? 10;
 
     return await Books.find().populate("created_by", "firstName lastName").skip((startfrom)).limit(displayRecords);
 

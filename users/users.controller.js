@@ -22,7 +22,7 @@ function authenticate(req, res, next) {
 function register(req, res, next) {
 
     userService.create(req.body)
-        .then(() => res.json({ msg: "user created succe" }))
+        .then(() => res.json({ msg: "user created success" }))
         .catch(err => next(err));
 }
 
