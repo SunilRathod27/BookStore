@@ -66,9 +66,9 @@ async function update(id, userParam) {
     // copy userParam properties to user
     Object.assign(user, userParam);
 
-    await user.save();
+    return await user.save();
 }
 
 async function _delete(id) {
-    await User.findByIdAndRemove(id);
+    return await User.findByIdAndRemove(id);
 }

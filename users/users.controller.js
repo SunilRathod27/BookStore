@@ -5,11 +5,11 @@ const userService = require('./user.service');
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
-router.get('/', getAll);
+router.get('/getusers', getAll);
 router.get('/current', getCurrent);
-router.get('/:id', getById);
-router.put('/:id', update);
-router.delete('/:id', _delete);
+router.post('/getById', getById);
+router.put('/update/:id', update);
+router.delete('/delete/:id', _delete);
 
 module.exports = router;
 
@@ -20,8 +20,9 @@ function authenticate(req, res, next) {
 }
 
 function register(req, res, next) {
+
     userService.create(req.body)
-        .then(() => res.json({}))
+        .then(() => res.json({ msg: "user created succe" }))
         .catch(err => next(err));
 }
 
@@ -38,19 +39,26 @@ function getCurrent(req, res, next) {
 }
 
 function getById(req, res, next) {
-    userService.getById(req.params.id)
+    userService.getById(req.body.id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
 function update(req, res, next) {
     userService.update(req.params.id, req.body)
-        .then(() => res.json({}))
+        .then((data) => res.json(data))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
+
     userService.delete(req.params.id)
-        .then(() => res.json({}))
+        .then((data) => {
+            if (data != null) {
+                res.json({ msg: `${data.username} deleted success` })
+            } else {
+                res.json({ msg: `something went wrong` })
+            }
+        })
         .catch(err => next(err));
 }

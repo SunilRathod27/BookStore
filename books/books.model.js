@@ -10,4 +10,4 @@ const schema = new Schema({
     update_at: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Books', schema);
+module.exports = mongoose.model('books', schema);
